@@ -52,8 +52,14 @@ public class ListNode {
             return;
         }
         ListNode p = ln;
+        boolean flag = true;
         while (p != null) {
-            System.out.print(p.val + " -> ");
+            if (flag) {
+                System.out.print(p.val);
+                flag = false;
+            } else {
+                System.out.print(" -> " + p.val);
+            }
             p = p.next;
         }
         System.out.println();

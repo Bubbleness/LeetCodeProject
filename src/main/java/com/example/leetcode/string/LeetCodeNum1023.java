@@ -28,27 +28,63 @@ public class LeetCodeNum1023 {
             return false;
         }
 
-        for (int i=0; i<target.length();) {
+        String targetUpCase = removeLowCaseLetter(target);
+        String patternUpCase = removeLowCaseLetter(pattern);
+        if (!targetUpCase.equals(patternUpCase)) {
+            return false;
+        }
 
-            int j = 0;
-            while (j < pattern.length()) {
-                if (target.charAt(i) == pattern.charAt(j)) {
-                    j++;
-                    i++;
-                } else {
-                    i++;
-                }
+        int i = 0, j = 0;
+        while (i < target.length()) {
+
+            if (target.charAt(i) == pattern.charAt(j)) {
+                i++;
+                j++;
+            } else {
+                i++;
             }
+            // 判断模式串是否已经匹配完
             if (j == pattern.length()) {
-                return true;
+                break;
             }
         }
-        return false;
+
+        // 模式串已经匹配完但是目标串还有剩余
+        // 检查目标串剩余部分是否有大写
+        boolean flag = (j == pattern.length());
+        if (!flag) {
+            // j没走到尾 不匹配
+            return false;
+        }
+
+        while (i < target.length()) {
+            if (target.charAt(i) >= 'A' && target.charAt(i) <= 'Z') {
+                flag = false;
+                break;
+            }
+            i++;
+        }
+
+        return flag;
+    }
+
+    public static String removeLowCaseLetter(String str) {
+
+        if (str == null || "".equals(str)) {
+            return str;
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i=0; i<str.length(); i++) {
+            if (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z') {
+                sb.append(str.charAt(i));
+            }
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
         String[] queries = new String[]{"FooBar","FooBarTest","FootBall","FrameBuffer","ForceFeedBack"};
-        String pattern = "FB";
+        String pattern = "FoBaT";
         LeetCodeNum1023 lc = new LeetCodeNum1023();
         List<Boolean> res = lc.camelMatch(queries, pattern);
         for (Boolean item : res) {
