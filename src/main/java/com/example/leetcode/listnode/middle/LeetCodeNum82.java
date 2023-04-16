@@ -3,7 +3,7 @@ package com.example.leetcode.listnode.middle;
 import com.example.leetcode.common.ListNode;
 
 /**
- * @auther shuiyu
+ * @author shuiyu
  */
 public class LeetCodeNum82 {
 
@@ -43,6 +43,34 @@ public class LeetCodeNum82 {
         return head;
     }
 
+    // 解法2: 增加一个空的头节点
+    public ListNode deleteDuplicates2(ListNode head) {
+
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode dummy = new ListNode();
+        dummy.next = head;
+        ListNode cur = dummy, p = head, q = null;
+        while (cur.next != null && cur.next.next != null) {
+            p = cur.next;
+            q = cur.next.next;
+            if (p.val == q.val) {
+                // 说明p节点是重复节点，要删除，且后面节点值为 p.val 的节点也要删除
+                int num = p.val;
+                while (p != null && p.val == num) {
+                    // 删除p节点以及后续值等于p.val的节点
+                    cur.next = p.next;
+                    p = p.next;
+                }
+            } else {
+                // 说明p节点不重复，可以保留
+                cur = p;
+            }
+        }
+        return dummy.next;
+    }
+
     public static ListNode removeDuplicateHead(ListNode head) {
 
         if (head == null || head.next == null) {
@@ -72,7 +100,7 @@ public class LeetCodeNum82 {
         LeetCodeNum82 lc = new LeetCodeNum82();
 //        ListNode newHead = removeDuplicateHead(head);
 //        ListNode.printList(newHead);
-        ListNode newHead = lc.deleteDuplicates(head);
+        ListNode newHead = lc.deleteDuplicates2(head);
         ListNode.printList(newHead);
     }
 }
