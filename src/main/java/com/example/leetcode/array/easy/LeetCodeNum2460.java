@@ -21,12 +21,16 @@ public class LeetCodeNum2460 {
                 ++index;
             }
         }
+        if (nums[nums.length-1] != 0) {
+            res[index] = nums[nums.length-1];
+            ++index;
+        }
         return res;
     }
 
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 2, 1, 1, 0};
+        int[] nums = new int[]{0,1};
         LeetCodeNum2460 lc = new LeetCodeNum2460();
         int[] res = lc.applyOperations(nums);
         System.out.println(JSONObject.toJSONString(res));
