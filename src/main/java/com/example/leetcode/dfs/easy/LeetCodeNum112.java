@@ -16,6 +16,9 @@ public class LeetCodeNum112 {
      *  1. 首先思考清楚，这个递归函数的含义，要做什么事情：要判断一颗树是否有从root到叶子的路径之和为targetSum，返回这颗树是否满足这个条件。
      *  2. 思考递归的出口：这个树怎么才能满足条件？如果root就是叶子，只要判断root的值是否为targetSum；
      *     如果root不是叶子，那么需要判断左子树或者右子树是否能满足从根到叶子的路径之和为targetSum-root.val
+     *
+     *  dfs过程中不需要标记状态的原因在于：
+     *      每一个遍历过的节点只会遍历一次，之后不会在遍历到，比如root，计算完后，就不会在遍历到，剩下的就会去遍历root的左右子树
      */
     public boolean hasPathSum(TreeNode root, int targetSum) {
 
