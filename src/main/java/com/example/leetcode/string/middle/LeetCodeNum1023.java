@@ -1,4 +1,4 @@
-package com.example.leetcode.string;
+package com.example.leetcode.string.middle;
 
 import com.example.leetcode.common.StringUtils;
 
