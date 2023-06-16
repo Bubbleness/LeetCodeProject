@@ -18,7 +18,7 @@ public class LeetCodeNum1177 {
     public List<Boolean> canMakePaliQueries2(String s, int[][] queries) {
 
         int n = s.length();
-        // sum[i] 代表第i位上的字母是奇数个还是偶数个
+        // sum[i] 代表第i位上的字母是奇数个还是偶数个，0代表偶数个 1代表奇数个
         // 比如 10010 表示b、e出现奇数次
         int[] sum = new int[n+1];
         for (int i=0; i<n; i++) {
@@ -29,7 +29,7 @@ public class LeetCodeNum1177 {
             // d 对应 1 << 3 = 1000
             // 一个二进制数组哪一位为1则表示这个位上对应的字符为奇数个
             int bit = 1 << (s.charAt(i) - 'a');
-            // 计算第i+1位上的字符出现次数
+            // 计算第i+1位上的字符出现的次数是奇数次还是偶数次
             sum[i+1] = sum[i] ^ bit;
         }
 
@@ -112,7 +112,7 @@ public class LeetCodeNum1177 {
         String str = "abcd";
         int[][] queries = new int[][] {{0, 3, 1}, {0, 3, 2}};
         LeetCodeNum1177 lc = new LeetCodeNum1177();
-        System.out.println(lc.canMakePaliQueries(str, queries));
+        System.out.println(lc.canMakePaliQueries2(str, queries));
 
         System.out.println(1 ^ 3);
     }
