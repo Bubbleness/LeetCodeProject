@@ -7,6 +7,6 @@ package com.example.leetcode.dp.hard;
 public class LeetCodeNum1494 {
 
     public int minNumberOfSemesters(int n, int[][] relations, int k) {
-
+        return 0;
     }
 }
