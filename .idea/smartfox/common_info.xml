@@ -2,8 +2,8 @@
 <project version="4">
   <component name="SmartFoxWorkToolsProjectState">
     <option name="branch" value="master" />
-    <option name="gitUrl" value="https://github.com/Bubbleness/LeetCodeProject.git" />
+    <option name="gitUrl" value="git@github.com:Bubbleness/LeetCodeProject.git" />
     <option name="localBranch" value="master" />
-    <option name="revision" value="7d19a979ab13c05d7f7c55a496271c64a1325261" />
+    <option name="revision" value="c0c944c9c5177e68c878d8c4222bac10349bc35a" />
   </component>
 </project>
