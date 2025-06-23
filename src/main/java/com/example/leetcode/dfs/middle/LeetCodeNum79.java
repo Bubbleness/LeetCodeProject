@@ -1,4 +1,4 @@
-package com.example.leetcode.dfs.hard;
+package com.example.leetcode.dfs.middle;
 
 /**
  * @author: mucheng.ys
